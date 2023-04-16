@@ -1,0 +1,52 @@
+* Recommendation_Page */
+html, body {
+    margin:0;
+    height:100%;
+}
+
+.back{
+    width:100%;
+    height:100%;
+    /* background-image: url("public/background_img.jpg"); */
+    box-sizing:border-box;
+    background-size: contain;
+}
+
+.recommendations {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.r-block {
+    height: 400px;
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-left: 20px;
+    padding-top: 20px;
+}
+
+.r-block img {
+    height: 200px;
+    width: 170px;
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.m_name{
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.m_genre{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+.m_genre p{
+    font-size: 17px;
+
+}
