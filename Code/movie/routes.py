@@ -1,5 +1,5 @@
 from movie import app
-from flask import render_template,flash
+from flask import Flask, render_template, request, jsonify, url_for, redirect,flash
 from movie.forms import MovieForm, UserForm
 
 # copied from item_based
@@ -30,6 +30,8 @@ ratings.sort_values('number_of_ratings', ascending=False).head(20)
 data_mean=matrix.mean()
 data_std=matrix.std()
 normalized_df=(matrix-matrix.mean())/matrix.std()
+
+movie_list=[]
 
 # copied from item_based end
 
@@ -70,16 +72,19 @@ def movierec():
             
             movie_name,year,poster=[],[],[]
             print('hello')
-
+            movie_list_item.clear()
             for x in final_rec['Title'][1:]:
                 print('hello2',x)
                 name=x.split('(')[0][:-1]
                 if name[-3:]=='The':
                     name=name[-3:]+' ' + name[:-5]
-                movie_name.append(name)
+                movie_list.append(name)
+            
                 #poster.append(mp.get_poster(name))
+                #year.append(x.split('(')[1][:-1])
+            return redirect(url_for('results'))
+
                 
-                year.append(x.split('(')[1][:-1])
         #print(movie_name,year)
 
 # samaan ends item_based
@@ -88,3 +93,10 @@ def movierec():
             #    flash(final[i])
                 
     return render_template('item_based.html',form=form)
+
+
+@app.route('/results',methods=['GET','POST'])
+def results():
+    #movie_name = request.args.get('movies', None)
+    #print(movie_name)
+    return render_template('results.html',movie_name=movie_list)
