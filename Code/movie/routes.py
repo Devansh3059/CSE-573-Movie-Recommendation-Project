@@ -9,6 +9,10 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 import movieposters as mp
+from imdb import Cinemagoer
+ia = Cinemagoer()
+
+
 
 
 
@@ -59,7 +63,7 @@ all_user_predicted_ratings = np.dot(np.dot(U, sigma), Vt) + user_ratings_mean.re
 preds_df = pd.DataFrame(all_user_predicted_ratings, columns = R_df.columns)
 
 
-movie_list,year_list,genre_list=[],[],[]
+movie_list,year_list,genre_list,poster_list,rating_list=[],[],[],[],[]
 
 # copied from item_based end
 
@@ -98,9 +102,14 @@ def itemBasedRec():
             final_rec=final_rec[['title','number_of_ratings']]
             final_rec.columns=['Title','Number of Ratings']
             
-            movie_name,year,poster=[],[],[]
+            
             print('hello')
             movie_list.clear()
+            poster_list.clear()
+            year_list.clear()
+            genre_list.clear()
+            rating_list.clear()            
+
             for x in final_rec['Title'][1:]:
                 print('hello2',x)
                 name=x.split('(')[0][:-1]
@@ -108,8 +117,14 @@ def itemBasedRec():
                     name=name[-3:]+' ' + name[:-5]
                 movie_list.append(name)
             
-                #poster.append(mp.get_poster(name))
-                #year.append(x.split('(')[1][:-1])
+                # poster_list.append(mp.get_poster(name))
+                movies = ia.search_movie(name)
+                code=movies[0].movieID
+                movie = ia.get_movie(code)
+                poster_list.append(movie['cover url'])
+                genre_list.append(movie['genres'][0])
+                rating_list.append(movie['rating'])
+                year_list.append(x.split('(')[1][:-1])
             return redirect(url_for('results'))
 
                 
@@ -153,14 +168,26 @@ def userBasedRec():
                         )
         movie_name,year,poster=[],[],[]
         movie_list.clear()
+        poster_list.clear()
+        year_list.clear()
+        rating_list.clear()
         for x in recommendations['Title']:
             name=x.split('(')[0][:-1]
             if name[-3:]=='The':
                 name=name[-3:]+' ' + name[:-5]
             movie_list.append(name)
-            #poster.append(mp.get_poster(name))
-            #year.append(x.split('(')[1][:-1])
-        #genre=list(recommendations['Genres'])
+            movies = ia.search_movie(name)
+            code=movies[0].movieID
+            movie = ia.get_movie(code)
+            poster_list.append(movie['cover url'])
+            
+            rating_list.append(movie['rating'])
+            #poster_list.append(mp.get_poster(name))
+            year_list.append(x.split('(')[1][:-1])
+        global genre_list
+        genre_list=list(recommendations['Genres'])
+        for i in range(len(genre_list)):
+            genre_list[i]=genre_list[i].split('|')[0]
         return redirect(url_for('results'))
 
                 
@@ -177,4 +204,4 @@ def userBasedRec():
 def results():
     #movie_name = request.args.get('movies', None)
     #print(movie_name)
-    return render_template('results.html',movie_name=movie_list)
+    return render_template('results.html',movie_name=movie_list,posters=poster_list,genres=genre_list,years=year_list,ratings=rating_list)
