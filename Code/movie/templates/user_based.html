@@ -95,9 +95,8 @@
             </form> -->
             <form action="" method="post">
                 {{ form.hidden_tag() }}
-                <p class="m-name">{{ form.moviename(placeholder='Enter User ID...')}}</p>
-                <p class="submit">{{ form.submit() }}</p>
-          
+                <p class="m-name">{{ form.moviename(class_="m-name")}}</p>
+                <p>{{ form.submit(class_="submit")}}</p>
               </form>
         </div>
     </div>
