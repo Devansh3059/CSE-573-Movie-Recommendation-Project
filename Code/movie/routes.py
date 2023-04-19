@@ -72,7 +72,7 @@ def movierec():
             
             movie_name,year,poster=[],[],[]
             print('hello')
-            movie_list_item.clear()
+            movie_list.clear()
             for x in final_rec['Title'][1:]:
                 print('hello2',x)
                 name=x.split('(')[0][:-1]
