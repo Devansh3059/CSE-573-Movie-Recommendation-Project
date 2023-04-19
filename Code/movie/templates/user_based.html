@@ -84,15 +84,21 @@
 <body>
 
     <div class="backk">
-        <img src="..\public/images/background_img.jpg" alt="" class="back">
+        <img src="../static/img/background_img.jpg" alt="" class="back">
         <div class="initial_movie">
             User Based Recommedations
         </div>
         <div class="form_div_user">
-            <form action="../views/results.html">
+            <!-- <form action="../views/results.html">
                 <input class="m-name" type="number" name="user-name">
                 <button type="submit" class="submit">Get Recommendations</button>
-            </form>
+            </form> -->
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p class="m-name">{{ form.moviename(placeholder='Enter User ID...')}}</p>
+                <p class="submit">{{ form.submit() }}</p>
+          
+              </form>
         </div>
     </div>
 
