@@ -60,7 +60,7 @@
             font-weight: 500;
         }
 
-        .submit {
+        .submit-btn {
             position: relative;
             height: auto;
             width: auto;
@@ -95,8 +95,12 @@
             </form> -->
             <form action="" method="post">
                 {{ form.hidden_tag() }}
-                <p class="m-name">{{ form.moviename(placeholder='Enter Movie Name...')}}</p>
-                <p class="submit">{{ form.submit() }}</p>
+                <!-- <p class="m-name"> -->
+                    {{ form.moviename(class_="m_name")}}
+                <!-- </p> -->
+                <!-- <p class="submit-btn"> -->
+                    {{ form.submit(class_="submit-btn") }}
+                <!-- </p> -->
           
               </form>
         </div>
