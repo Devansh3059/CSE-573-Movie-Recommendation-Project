@@ -26,12 +26,7 @@
             top: 0;
             width: 100%;
             height: 99.9%;
-<<<<<<< Updated upstream
-            z-index: -1;
-
-=======
             z-index: -10;
->>>>>>> Stashed changes
         }
 
         .initial_movie {
@@ -73,6 +68,23 @@
             text-align: center;
             font-size: 22px;
             font-weight: bold;
+        }
+
+        .s_line{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .m_date{
+            color: black;
+            background-color: white;
+            padding: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 5px;
+            height: 20px;
+            margin-right: 25px;
         }
 
         .m_genre {
@@ -143,13 +155,16 @@
                 <div id="r1_name" class="m_name">
                     <p>{{ movie_name[0] }}</p>
                 </div>
-                <div class="m_genre">
-                    <p>Genre &#58 &nbsp</p>
-                    <label>{{genres[0]}}</label>
+                <div class="s_line">
+                    <div class="m_genre">
+                        <p>Genre &#58 &nbsp</p>
+                        <label>{{genres[0]}}</label>
+                    </div>
+                    <div class="m_date">
+                        {{years[0]}}
+                    </div>
                 </div>
                 <div class="m_imdb">
-                    <p>{{years[0]}}</p>
-                    <br>
                     <p>{{ratings[0]}}</p>
                     <i class="fa-brands fa-imdb"></i>
                 </div>
@@ -161,12 +176,16 @@
                 <div id="r2_name" class="m_name">
                     <p>{{ movie_name[1] }}</p>
                 </div>
-                <div class="m_genre">
-                    <p>Genre &#58 &nbsp</p>
-                    <label>{{genres[1]}}</label>
+               <div class="s_line">
+                    <div class="m_genre">
+                        <p>Genre &#58 &nbsp</p>
+                        <label>{{genres[1]}}</label>
+                    </div>
+                    <div class="m_date">
+                        {{years[1]}}
+                    </div>
                 </div>
                 <div class="m_imdb">
-                    <p>{{years[1]}}</p><br>
                     <p>{{ratings[1]}}</p>
                     <i class="fa-brands fa-imdb"></i>
                 </div>
@@ -178,12 +197,16 @@
                 <div id="r3_name" class="m_name">
                     <p>{{ movie_name[2] }}</p>
                 </div>
-                <div class="m_genre">
-                    <p>Genre &#58 &nbsp</p>
-                    <label>{{genres[2]}}</label>
+               <div class="s_line">
+                    <div class="m_genre">
+                        <p>Genre &#58 &nbsp</p>
+                        <label>{{genres[2]}}</label>
+                    </div>
+                    <div class="m_date">
+                        {{years[2]}}
+                    </div>
                 </div>
                 <div class="m_imdb">
-                    <p>{{years[2]}}</p><br>
                     <p>{{ratings[2]}}</p>
                     <i class="fa-brands fa-imdb"></i>
                 </div>
@@ -195,29 +218,37 @@
                 <div id="r4_name" class="m_name">
                     <p>{{ movie_name[3] }}</p>
                 </div>
-                <div class="m_genre">
-                    <p>Genre &#58 &nbsp</p>
-                    <label>{{genres[3]}}</label>
+               <div class="s_line">
+                    <div class="m_genre">
+                        <p>Genre &#58 &nbsp</p>
+                        <label>{{genres[3]}}</label>
+                    </div>
+                    <div class="m_date">
+                        {{years[3]}}
+                    </div>
                 </div>
                 <div class="m_imdb">
-                    <p>{{years[3]}}</p><br>
                     <p>{{ratings[3]}}</p>
                     <i class="fa-brands fa-imdb"></i>
                 </div>
             </div>
             <div class="r-block">
                 <div class="r5_img">
-                    <img src={{ posters[0] }} alt="">
+                    <img src={{ posters[4] }} alt="">
                 </div>
                 <div id="r5_name" class="m_name">
                     <p>{{ movie_name[4] }}</p>
                 </div>
-                <div class="m_genre">
-                    <p>Genre &#58 &nbsp;</p>
-                    <label>{{genres[4]}}</label>
+               <div class="s_line">
+                    <div class="m_genre">
+                        <p>Genre &#58 &nbsp</p>
+                        <label>{{genres[4]}}</label>
+                    </div>
+                    <div class="m_date">
+                        {{years[4]}}
+                    </div>
                 </div>
                 <div class="m_imdb">
-                    <p>{{years[4]}}</p><br>
                     <p>{{ratings[4]}}</p>
                     <i class="fa-brands fa-imdb"></i>
                 </div>
@@ -225,16 +256,12 @@
         </div>
     </div>
 
-<<<<<<< Updated upstream
-    <a href="http://127.0.0.1:5000/" > Home </a>
-=======
     <a href="http://127.0.0.1:5000/" class="back_btn" >
 
         <i class="fa fa-home" aria-hidden="true"></i>    
         <p>Home</p> 
 
     </a>
->>>>>>> Stashed changes
 
 </body>
 
