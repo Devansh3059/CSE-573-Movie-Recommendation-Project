@@ -12,6 +12,8 @@ import movieposters as mp
 from imdb import Cinemagoer
 ia = Cinemagoer()
 
+movie_info_item=pd.read_csv('data/df_final_item.csv')
+movie_info=pd.read_csv('data/df_final.csv')
 
 
 
@@ -118,13 +120,13 @@ def itemBasedRec():
                 movie_list.append(name)
             
                 # poster_list.append(mp.get_poster(name))
-                movies = ia.search_movie(name)
-                code=movies[0].movieID
-                movie = ia.get_movie(code)
-                poster_list.append(movie['cover url'])
-                genre_list.append(movie['genres'][0])
-                rating_list.append(movie['rating'])
+                a= movie_info_item[movie_info_item['name']==name]
+                poster_list.append(a['poster'].iloc[0])
+                genre_list.append(a['genre'].iloc[0])
+                rating_list.append(a['rating'].iloc[0])
                 year_list.append(x.split('(')[1][:-1])
+                
+                
             return redirect(url_for('results'))
 
                 
@@ -176,18 +178,12 @@ def userBasedRec():
             if name[-3:]=='The':
                 name=name[-3:]+' ' + name[:-5]
             movie_list.append(name)
-            movies = ia.search_movie(name)
-            code=movies[0].movieID
-            movie = ia.get_movie(code)
-            poster_list.append(movie['cover url'])
-            
-            rating_list.append(movie['rating'])
-            #poster_list.append(mp.get_poster(name))
+            a= movie_info[movie_info['name']==name]
+            poster_list.append(a['poster'].iloc[0])
+            genre_list.append(a['genre'].iloc[0])
+            rating_list.append(a['rating'].iloc[0])
             year_list.append(x.split('(')[1][:-1])
-        global genre_list
-        genre_list=list(recommendations['Genres'])
-        for i in range(len(genre_list)):
-            genre_list[i]=genre_list[i].split('|')[0]
+            
         return redirect(url_for('results'))
 
                 
