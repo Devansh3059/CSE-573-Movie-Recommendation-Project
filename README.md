@@ -1,6 +1,6 @@
 ﻿# CSE-573-Movie-Recommendation-Project
  
- ##Prolem Statement
+ ## Problem Statement
  
 * Advancements in tech and increase in data consumption → many different industries and businesses such as E-commerce and entertainment industries have gained significance
 * Ad Revenue generation → companies grow & expand 
